@@ -1,8 +1,28 @@
 <?php
 
-class LinkAttributes {
-	private static $attrsAllowed=array( 'rel', 'rev', 'charset ', 'type', 'hreflang', 'itemprop', 'itemscope', 'media', 'title', 'accesskey', 'target' );
+use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\Linker\LinkTarget;
 
+class LinkAttributes {
+
+	private static $attrsAllowed=[
+		'rel',
+		'rev',
+		'charset ',
+		'type',
+		'hreflang',
+		'itemprop',
+		'itemscope',
+		'media',
+		'title',
+		'accesskey',
+		'target',
+	];
+
+	/**
+	 * @param string|HtmlArmor &$text
+	 * @param array &$attribs
+	 */
 	private static function doExtractAttributes ( &$text, &$attribs ) {
 
 		global $wgRequest;
@@ -10,6 +30,9 @@ class LinkAttributes {
 			return false;
 		}
 
+		if ( $text instanceof HtmlArmor ) {
+			$text = HtmlArmor::getHtml( $text );
+		}
 		/* No user input */
 		if ( null === $text )
 			return false;
@@ -34,23 +57,49 @@ class LinkAttributes {
 			}
 
 		}
-
 		return true;
 
 	}
 
-	public static function ExternalLink ( &$url, &$text, &$link, &$attribs ) {
+	/**
+	 * @link https://www.mediawiki.org/wiki/Manual:Hooks/LinkerMakeExternalLink
+	 * @param string &$url
+	 * @param string &$text
+	 * @param string &$link
+	 * @param string[] &$attribs
+	 * @param string $linktype
+	 * @return bool
+	 */
+	public static function ExternalLink (
+		&$url,
+		&$text,
+		&$link,
+		&$attribs
+	) {
 
 		self::doExtractAttributes ( $text, $attribs );
 		return true;
 	}
-
-	public static function InternalLink ( $skin, $target, &$text, &$customAttribs, &$query, &$options, &$ret ) {
-
-		self::doExtractAttributes ( $text, $customAttribs );
+	
+	/**
+	 * @link https://www.mediawiki.org/wiki/Manual:Hooks/HtmlPageLinkRendererEnd
+	 * @param LinkRenderer $linkRenderer
+	 * @param LinkTarget $target
+	 * @param bool $isKnown
+	 * @param string &$text
+	 * @param string[] &$attribs
+	 * @param string &$ret
+	 * @return bool
+	 */
+	public static function InternalLink(
+		LinkRenderer $linkRenderer,
+		LinkTarget $target,
+		$isKnown,
+		&$text,
+		&$attribs,
+		&$ret
+	) {
+		static::doExtractAttributes( $text, $attribs );
 		return true;
-
 	}
-
-
 }
