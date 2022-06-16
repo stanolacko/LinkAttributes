@@ -14,7 +14,7 @@ $wgExtensionCredits['parserhook'][] = array(
 );
 
 $wgAutoloadClasses['LinkAttributes'] = dirname( __FILE__ ) . '/LinkAttributes.body.php';
-$wgExtensionMessagesFiles['ParserFunctions'] = dirname( __FILE__ ) . '/LinkAttributes.i18n.php';
+$wgExtensionMessagesFiles['LinkAttributes'] = dirname( __FILE__ ) . '/LinkAttributes.i18n.php';
 
 global $wgHooks;
 $wgHooks['LinkerMakeExternalLink'][] = 'LinkAttributes::ExternalLink';
