@@ -6,11 +6,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
-	'name' => 'LinksAttributes',
-	'version' => '0.1',
+	'name' => 'LinkAttributes',
+	'version' => '0.4',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:LinkAttributes',
-	'author' => array( 'Leo Wallentin' ),
-	'descriptionmsg' => 'linkattr-desc',
+	'author' => array( 'Stano Lacko, Leo Wallentin' ),
+	'license-name' => 'BSD',
 );
 
 $wgAutoloadClasses['LinkAttributes'] = dirname( __FILE__ ) . '/LinkAttributes.body.php';
@@ -18,5 +18,4 @@ $wgExtensionMessagesFiles['ParserFunctions'] = dirname( __FILE__ ) . '/LinkAttri
 
 global $wgHooks;
 $wgHooks['LinkerMakeExternalLink'][] = 'LinkAttributes::ExternalLink';
-$wgHooks['LinkBegin'][] = 'LinkAttributes::InternalLink';
-
+$wgHooks['HtmlPageLinkRendererEnd'][] = 'LinkAttributes::InternalLink';
