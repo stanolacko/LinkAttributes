@@ -9,8 +9,9 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'LinkAttributes',
 	'version' => '0.4',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:LinkAttributes',
-	'author' => array( 'Stano Lacko, Leo Wallentin' ),
+	'author' => array( 'Stano Lacko, Leo Wallentin', 'Sinscerly' ),
 	'license-name' => 'BSD',
+    'descriptionmsg' => 'linkattr-desc',
 );
 
 $wgAutoloadClasses['LinkAttributes'] = dirname( __FILE__ ) . '/LinkAttributes.body.php';
