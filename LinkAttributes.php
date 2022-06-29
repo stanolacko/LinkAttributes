@@ -14,6 +14,8 @@ $wgExtensionCredits['parserhook'][] = array(
     'descriptionmsg' => 'linkattr-desc',
 );
 
+$wgMessagesDirs['LinkAttributes'] = __DIR__ . '/i18n';
+
 $wgAutoloadClasses['LinkAttributes'] = dirname( __FILE__ ) . '/LinkAttributes.body.php';
 $wgExtensionMessagesFiles['LinkAttributes'] = dirname( __FILE__ ) . '/LinkAttributes.i18n.php';
 
