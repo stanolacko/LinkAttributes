@@ -30,20 +30,27 @@ class LinkAttributes {
 			return false;
 		}
 
-		if ( $text instanceof HtmlArmor ) {
-			$text = HtmlArmor::getHtml( $text );
+		if ($text instanceof HtmlArmor) {
+			$_text = HtmlArmor::getHtml($text);
+		} else {
+			$_text = $text;
 		}
 		/* No user input */
-		if ( null === $text )
+		if ( null === $_text )
 			return false;
-
+			
 		/* Extract attributes, separated by | or ¦. /u is for unicode, to recognize the ¦.*/
-		$arr = preg_split( '/[|¦]/u', $text );
-		$text = array_shift( $arr );
-
+		$arr = preg_split( '/[|¦]/u', $_text);
+		$_text = array_shift( $arr );
+		if ($text instanceof HtmlArmor) {
+			$_text = new HtmlArmor($_text);
+		} else {
+			$text = $text;
+		}
+			
 		foreach ( $arr as $a ) {
 
-			$pair = explode( '=', $a );
+			$pair = explode( '=', $a, 2);
 
 			/* Only go ahead if we have a aaa=bbb pattern, and aaa i an allowed attribute */
 			if ( isset( $pair[1] ) && in_array( $pair[0], self::$attrsAllowed ) ) {
