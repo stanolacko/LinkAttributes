@@ -11,13 +11,12 @@ $wgExtensionCredits['parserhook'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:LinkAttributes',
 	'author' => array( 'Stano Lacko, Leo Wallentin', 'Sinscerly' ),
 	'license-name' => 'BSD',
-    'descriptionmsg' => 'linkattr-desc',
+	'descriptionmsg' => 'linkattr-desc',
 );
 
 $wgMessagesDirs['LinkAttributes'] = __DIR__ . '/i18n';
 
 $wgAutoloadClasses['LinkAttributes'] = dirname( __FILE__ ) . '/LinkAttributes.body.php';
-$wgExtensionMessagesFiles['LinkAttributes'] = dirname( __FILE__ ) . '/LinkAttributes.i18n.php';
 
 global $wgHooks;
 $wgHooks['LinkerMakeExternalLink'][] = 'LinkAttributes::ExternalLink';
