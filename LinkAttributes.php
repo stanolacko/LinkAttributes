@@ -7,7 +7,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'LinkAttributes',
-	'version' => '0.4',
+	'version' => '0.5',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:LinkAttributes',
 	'author' => array( 'Stano Lacko, Leo Wallentin', 'Sinscerly' ),
 	'license-name' => 'BSD',
