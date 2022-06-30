@@ -1,6 +1,6 @@
 A MediaWiki extension ([http://www.mediawiki.org/wiki/Extension:LinkAttributes Extension:LinkAttributes]) which extends the link syntax to allow custom attributes, such as rel="author" or item*.
 
-;Release:  [https://github.com/stanolacko/LinkAttributes/tags v0.4] beta
+;Release:  [https://github.com/stanolacko/LinkAttributes/tags v0.5] beta
 ;Dependencies: MediaWiki 1.19+
 
 ==Installation==
@@ -21,6 +21,7 @@ Note that the following will NOT work: <pre>[[User:James|rel=author]]</pre>, as 
 
 
 ==Changelog==
+: [https://github.com/stanolacko/LinkAttributes/releases/tag/v0.5 v0.5]: Fixed HTML characters in text of links, added i18n support for Special:Version page, added NL/SK description
 : [https://github.com/stanolacko/LinkAttributes/releases/tag/v0.4 v0.4]: First revision version, added itemscope
 : [https://github.com/rotsee/LinkAttributes/releases/tag/v0.2 v0.2]: Second version (last beta). fixed issues #1 ,#4, #5, #6 and #9.
 : [https://github.com/rotsee/LinkAttributes/releases/tag/v0.1 v0.1]: First version (beta).
