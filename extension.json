@@ -1,0 +1,43 @@
+{
+	"name": "LinkAttributes",
+	"version": "0.6",
+	"author": [
+		"Stano Lacko",
+		"Leo Wallentin",
+		"Sinscerly"
+	],
+	"url": "",
+	"descriptionmsg": "linkattr-desc",
+	"license-name": "BSD",
+	"type": "parserhook",
+	"requires": {
+		"MediaWiki": ">= 1.39.0"
+	},
+	"MessagesDirs": {
+		"LinkAttributes": [
+			"i18n"
+		]
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\LinkAttributes\\": "src/"
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteExtPath": "LinkAttributes"
+	},
+	"HookHandlers": {
+		"main": {
+			"class": "MediaWiki\\Extension\\LinkAttributes\\Hooks"
+		}
+	},
+	"Hooks": {
+		"LinkerMakeExternalLink": {
+			"handler": "main"
+		},
+		"HtmlPageLinkRendererEnd": {
+			"handler": "main"
+		}
+	},
+	"load_composer_autoloader": true,
+	"manifest_version": 2
+}
